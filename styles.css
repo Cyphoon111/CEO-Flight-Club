@@ -1,0 +1,95 @@
+/* ============================================================
+   CEO FLIGHT CLUB — Splash Page
+   Logo image shown precisely as-is, with an elegant
+   one-line descriptor beneath it.
+   ============================================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: #000;          /* matches the image's seamless black edges */
+  overflow: hidden;
+}
+
+/* Stage fills the viewport; children are absolutely positioned. */
+.stage {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 5vh, 3.5rem);
+  position: relative;
+}
+
+/* Logo is the hero — pinned to the optical center of the page,
+   biased slightly upward so it reads as prominently centered
+   rather than sinking toward the bottom. The displayed asset is
+   the pure gold mark with symmetric black padding, so its
+   geometric center equals the visible gold center. */
+.splash-wrap {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* The logo, scaled to fit, never cropped or distorted. */
+.splash {
+  max-width: min(92vw, 1120px);
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;   /* crisp scaling */
+}
+
+/* One-line descriptor — refined gold gradient text, generously
+   tracked, evoking the same premium aesthetic as the logo. */
+.tagline {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-weight: 500;
+  font-size: clamp(0.95rem, 2.4vw, 1.85rem);
+  letter-spacing: clamp(0.06em, 0.5vw, 0.22em);
+  text-align: center;
+  line-height: 1.35;
+  white-space: nowrap;
+
+  /* Anchored near the bottom of the page, independent of the
+     vertically-centered logo above. */
+  position: absolute;
+  left: 50%;
+  bottom: clamp(5rem, 14vh, 10rem);
+  transform: translateX(-50%);
+
+  background: linear-gradient(
+    180deg,
+    #f7e7b6 0%,
+    #e6c878 32%,
+    #c79a44 56%,
+    #f3e2a8 80%,
+    #b8862f 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #d9b25e;            /* fallback for non-clip browsers */
+
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* On narrow screens, allow the line to wrap gracefully rather
+   than overflow. */
+@media (max-width: 640px) {
+  .tagline {
+    white-space: normal;
+    max-width: 90%;
+  }
+}
